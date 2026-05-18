@@ -1,0 +1,90 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export function Footer() {
+  return (
+    <footer className="mt-auto border-t border-sand bg-stone text-cream">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+          <div className="max-w-sm">
+            <Image
+              src="/images/tzatziki-logo.png"
+              alt="Ted's Premium Tzatziki"
+              width={120}
+              height={120}
+              className="mb-4 h-24 w-24 object-contain"
+            />
+            <p className="font-display text-lg text-cream">
+              Ted&apos;s Premium Tzatziki
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-cream/70">
+              Family-owned Greek tzatziki made with love in Des Moines since
+              1957. From Coney Island classics to creamy Mediterranean dips.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
+                Shop
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="/shop" className="hover:text-olive-light">
+                    All Products
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cart" className="hover:text-olive-light">
+                    Cart
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
+                About
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="/our-story" className="hover:text-olive-light">
+                    Our Story
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/recipes" className="hover:text-olive-light">
+                    Recipes
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-olive-light">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
+                Visit
+              </p>
+              <p className="text-sm leading-relaxed text-cream/70">
+                Ted&apos;s West
+                <br />
+                Des Moines, IA
+                <br />
+                Gyros, coneys &amp; homemade favorites
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="greek-key mt-10 opacity-40" aria-hidden />
+
+        <p className="mt-8 text-center text-xs text-cream/50">
+          © {new Date().getFullYear()} Ted&apos;s. Family owned &amp; operated
+          since 2005.
+        </p>
+      </div>
+    </footer>
+  );
+}

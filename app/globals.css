@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #faf7f2;
+  --sand: #e8e0d4;
+  --stone: #2c3330;
+  --olive: #5a7a4a;
+  --olive-dark: #3d5534;
+  --olive-light: #8fb87a;
+  --aegean: #1a5fa8;
+  --aegean-dark: #124578;
+  --sky-light: #e8f2fa;
+  --coney-red: #c41e3a;
+  --cucumber: #6aab5a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-stone: var(--stone);
+  --color-olive: var(--olive);
+  --color-olive-dark: var(--olive-dark);
+  --color-olive-light: var(--olive-light);
+  --color-aegean: var(--aegean);
+  --color-aegean-dark: var(--aegean-dark);
+  --color-sky-light: var(--sky-light);
+  --color-coney-red: var(--coney-red);
+  --color-cucumber: var(--cucumber);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-playfair);
+  --font-script: var(--font-pacifico);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--stone);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+.greek-key {
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--aegean) 0,
+    var(--aegean) 8px,
+    transparent 8px,
+    transparent 12px,
+    var(--cream) 12px,
+    var(--cream) 16px,
+    var(--aegean) 16px,
+    var(--aegean) 20px,
+    transparent 20px,
+    transparent 24px
+  );
+  background-size: 48px 12px;
+}
+
+.hero-pattern {
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(90, 122, 74, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(26, 95, 168, 0.06) 0%,
+      transparent 50%
+    );
 }
