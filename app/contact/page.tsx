@@ -1,12 +1,16 @@
+import type { Metadata } from "next";
 import { ContactForm } from "./ContactForm";
 import { getContactPage } from "@/lib/sanity/api";
 
-export const metadata = {
-  title: "Contact | Ted's Premium Tzatziki",
-  description: "Get in touch with Ted's Premium Tzatziki.",
-};
-
 export const revalidate = 30;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getContactPage();
+  return {
+    title: page.seoTitle ?? "Contact | Ted's Premium Tzatziki",
+    description: page.seoDescription,
+  };
+}
 
 export default async function ContactPage() {
   const page = await getContactPage();
@@ -44,7 +48,17 @@ export default async function ContactPage() {
             )}
           </div>
         </div>
-        <ContactForm />
+        <ContactForm
+          nameLabel={page.formNameLabel ?? "Name"}
+          emailLabel={page.formEmailLabel ?? "Email"}
+          messageLabel={page.formMessageLabel ?? "Message"}
+          submitText={page.formSubmitText ?? "Send Message"}
+          successTitle={page.formSuccessTitle ?? "Message sent!"}
+          successMessage={
+            page.formSuccessMessage ??
+            "Thanks for reaching out. We'll get back to you soon."
+          }
+        />
       </div>
     </div>
   );

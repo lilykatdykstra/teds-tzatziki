@@ -10,6 +10,10 @@ export const productsQuery = groq`
     _id,
     name,
     "slug": slug.current,
+    sku,
+    packSize,
+    unitsPerCase,
+    minOrderCases,
     price,
     description,
     image { ${imageFields} },
@@ -22,6 +26,10 @@ export const productsByIdsQuery = groq`
     _id,
     name,
     "slug": slug.current,
+    sku,
+    packSize,
+    unitsPerCase,
+    minOrderCases,
     price,
     description,
     image { ${imageFields} },
@@ -36,7 +44,9 @@ export const homepageQuery = groq`
     heroHeadline,
     heroSubheadline,
     heroButtonText,
+    heroSecondaryButtonText,
     heroImage { ${imageFields} },
+    heroImageAlt,
     heroBadgeScript,
     heroBadgeLabel,
     whyEyebrow,
@@ -49,10 +59,13 @@ export const homepageQuery = groq`
 export const storyQuery = groq`
   *[_type == "story"][0] {
     _id,
+    seoTitle,
+    seoDescription,
     sectionEyebrow,
     title,
     body,
     founderPhoto { ${imageFields} },
+    founderPhotoAlt,
     quote,
     quoteAttribution
   }
@@ -61,31 +74,77 @@ export const storyQuery = groq`
 export const shopPageQuery = groq`
   *[_type == "shopPage"][0] {
     _id,
+    seoTitle,
+    seoDescription,
     eyebrow,
     title,
-    description
+    description,
+    benefits[] { _key, title, body },
+    catalogEyebrow,
+    catalogTitle,
+    catalogDescription,
+    pricingEyebrow,
+    pricingTitle,
+    pricingDescription,
+    pricingTiers[] { _key, tierName, orderMinimum, pricePerCase, perks },
+    moqEyebrow,
+    moqTitle,
+    moqDescription,
+    moqItems[] { _key, label, value },
+    howItWorksEyebrow,
+    howItWorksTitle,
+    howItWorksSteps[] { _key, title, body },
+    quoteEyebrow,
+    quoteTitle,
+    quoteDescription,
+    formStoreLabel,
+    formContactLabel,
+    formEmailLabel,
+    formPhoneLabel,
+    formStoreTypeLabel,
+    formStoreTypeOptions,
+    formProductsLabel,
+    formVolumeLabel,
+    formRegionLabel,
+    formMessageLabel,
+    formSubmitText,
+    formSuccessTitle,
+    formSuccessMessage
   }
 `;
 
 export const recipesPageQuery = groq`
   *[_type == "recipesPage"][0] {
     _id,
+    seoTitle,
+    seoDescription,
     eyebrow,
     title,
-    description
+    description,
+    backLinkText,
+    ingredientsHeading,
+    stepsHeading
   }
 `;
 
 export const contactPageQuery = groq`
   *[_type == "contactPage"][0] {
     _id,
+    seoTitle,
+    seoDescription,
     eyebrow,
     title,
     description,
     locationName,
     locationLine1,
     locationLine2,
-    visitNote
+    visitNote,
+    formNameLabel,
+    formEmailLabel,
+    formMessageLabel,
+    formSubmitText,
+    formSuccessTitle,
+    formSuccessMessage
   }
 `;
 

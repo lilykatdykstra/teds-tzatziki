@@ -1,14 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getRecipes, getRecipesPage } from "@/lib/sanity/api";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 
-export const metadata = {
-  title: "Recipes | Ted's Premium Tzatziki",
-  description: "Ways to enjoy Ted's tzatziki at home.",
-};
-
 export const revalidate = 30;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getRecipesPage();
+  return {
+    title: page.seoTitle ?? "Recipes | Ted's Premium Tzatziki",
+    description: page.seoDescription,
+  };
+}
 
 export default async function RecipesPage() {
   const [recipes, page] = await Promise.all([getRecipes(), getRecipesPage()]);

@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 
 export const product = defineType({
   name: "product",
-  title: "Product",
+  title: "Wholesale Product",
   type: "document",
   icon: PackageIcon,
   fields: [
@@ -21,9 +21,33 @@ export const product = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "price",
-      title: "Price (USD)",
+      name: "sku",
+      title: "SKU",
+      type: "string",
+    }),
+    defineField({
+      name: "packSize",
+      title: "Pack Size",
+      type: "string",
+      description: "e.g. 16 oz tub",
+    }),
+    defineField({
+      name: "unitsPerCase",
+      title: "Units Per Case",
       type: "number",
+      validation: (rule) => rule.min(1),
+    }),
+    defineField({
+      name: "minOrderCases",
+      title: "Minimum Order (cases)",
+      type: "number",
+      validation: (rule) => rule.min(1),
+    }),
+    defineField({
+      name: "price",
+      title: "MSRP (USD)",
+      type: "number",
+      description: "Suggested retail — wholesale pricing is quoted per tier",
       validation: (rule) => rule.required().min(0),
     }),
     defineField({
@@ -49,11 +73,11 @@ export const product = defineType({
     }),
   ],
   preview: {
-    select: { title: "name", subtitle: "price", media: "image" },
+    select: { title: "name", subtitle: "sku", media: "image" },
     prepare({ title, subtitle, media }) {
       return {
         title,
-        subtitle: subtitle != null ? `$${subtitle}` : undefined,
+        subtitle: subtitle ?? undefined,
         media,
       };
     },

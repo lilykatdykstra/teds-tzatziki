@@ -3,7 +3,23 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/Button";
 
-export function ContactForm() {
+type ContactFormProps = {
+  nameLabel: string;
+  emailLabel: string;
+  messageLabel: string;
+  submitText: string;
+  successTitle: string;
+  successMessage: string;
+};
+
+export function ContactForm({
+  nameLabel,
+  emailLabel,
+  messageLabel,
+  submitText,
+  successTitle,
+  successMessage,
+}: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -15,10 +31,8 @@ export function ContactForm() {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-sand bg-white p-12 text-center shadow-sm">
         <span className="text-4xl">✓</span>
-        <h2 className="mt-4 font-display text-2xl text-stone">Message sent!</h2>
-        <p className="mt-2 text-stone/70">
-          Thanks for reaching out. We&apos;ll get back to you soon.
-        </p>
+        <h2 className="mt-4 font-display text-2xl text-stone">{successTitle}</h2>
+        <p className="mt-2 text-stone/70">{successMessage}</p>
       </div>
     );
   }
@@ -31,7 +45,7 @@ export function ContactForm() {
       <div className="space-y-5">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-stone">
-            Name
+            {nameLabel}
           </label>
           <input
             id="name"
@@ -46,7 +60,7 @@ export function ContactForm() {
             htmlFor="email"
             className="block text-sm font-medium text-stone"
           >
-            Email
+            {emailLabel}
           </label>
           <input
             id="email"
@@ -61,7 +75,7 @@ export function ContactForm() {
             htmlFor="message"
             className="block text-sm font-medium text-stone"
           >
-            Message
+            {messageLabel}
           </label>
           <textarea
             id="message"
@@ -73,7 +87,7 @@ export function ContactForm() {
         </div>
       </div>
       <Button type="submit" className="mt-6 w-full sm:w-auto">
-        Send Message
+        {submitText}
       </Button>
     </form>
   );

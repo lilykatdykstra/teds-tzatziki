@@ -1,17 +1,21 @@
 /**
- * Seeds the Sanity dataset with content from sanity/seed-data.ts
- * (mirrors hardcoded copy from the site).
+ * Seeds the Sanity dataset with content from sanity/seed-data.ts.
  *
  * Prerequisites:
  *   1. Create a token at https://sanity.io/manage → API → Tokens (Editor permissions)
  *   2. Add to .env.local:  SANITY_API_WRITE_TOKEN=your_token_here
  *
- * Run:  npm run seed
+ * Run:
+ *   npm run seed              # everything
+ *   npm run seed:home
+ *   npm run seed:shop
+ *   npm run seed:story
+ *   npm run seed:recipes
+ *   npm run seed:contact
  */
 
 import { createClient, type SanityClient } from "@sanity/client";
-import { createReadStream } from "node:fs";
-import { readFileSync, realpathSync } from "node:fs";
+import { createReadStream, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -23,6 +27,9 @@ import {
   seedShopPage,
   seedStory,
 } from "../sanity/seed-data";
+
+const SEED_TARGETS = ["home", "shop", "story", "recipes", "contact", "all"] as const;
+type SeedTarget = (typeof SEED_TARGETS)[number];
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.join(__dirname, "..");
@@ -48,6 +55,18 @@ function loadEnvFile(filename: string) {
   } catch {
     // .env.local optional if vars already exported
   }
+}
+
+function parseTarget(arg: string | undefined): SeedTarget {
+  if (!arg || arg === "all") return "all";
+  if ((SEED_TARGETS as readonly string[]).includes(arg)) {
+    return arg as SeedTarget;
+  }
+  console.error(
+    `Unknown seed target "${arg}".\n` +
+      `Valid targets: ${SEED_TARGETS.join(", ")}`,
+  );
+  process.exit(1);
 }
 
 loadEnvFile(".env.local");
@@ -79,7 +98,10 @@ const client: SanityClient = createClient({
   useCdn: false,
 });
 
-const imageCache = new Map<string, { _type: "image"; asset: { _type: "reference"; _ref: string } }>();
+const imageCache = new Map<
+  string,
+  { _type: "image"; asset: { _type: "reference"; _ref: string } }
+>();
 
 async function uploadImage(relativePath: string) {
   const cached = imageCache.get(relativePath);
@@ -90,9 +112,11 @@ async function uploadImage(relativePath: string) {
 
   process.stdout.write(`  ↑ image ${relativePath}\n`);
 
-  const asset = await client.assets.upload("image", createReadStream(absolutePath), {
-    filename,
-  });
+  const asset = await client.assets.upload(
+    "image",
+    createReadStream(absolutePath),
+    { filename },
+  );
 
   const image = {
     _type: "image" as const,
@@ -107,9 +131,7 @@ function slugField(value: string) {
   return { _type: "slug" as const, current: value };
 }
 
-async function seed() {
-  console.log(`\nSeeding Sanity project ${projectId} / ${dataset}\n`);
-
+async function seedHome() {
   const heroImage = await uploadImage(seedHomepage.heroImagePath);
 
   await client.createOrReplace({
@@ -119,7 +141,9 @@ async function seed() {
     heroHeadline: seedHomepage.heroHeadline,
     heroSubheadline: seedHomepage.heroSubheadline,
     heroButtonText: seedHomepage.heroButtonText,
+    heroSecondaryButtonText: seedHomepage.heroSecondaryButtonText,
     heroImage,
+    heroImageAlt: seedHomepage.heroImageAlt,
     heroBadgeScript: seedHomepage.heroBadgeScript,
     heroBadgeLabel: seedHomepage.heroBadgeLabel,
     whyEyebrow: seedHomepage.whyEyebrow,
@@ -128,38 +152,33 @@ async function seed() {
     features: seedHomepage.features,
   });
   console.log("✓ Homepage");
+}
 
+async function seedStory() {
   const founderPhoto = await uploadImage(seedStory.founderPhotoPath);
 
   await client.createOrReplace({
     _type: "story",
     _id: seedStory._id,
+    seoTitle: seedStory.seoTitle,
+    seoDescription: seedStory.seoDescription,
     sectionEyebrow: seedStory.sectionEyebrow,
     title: seedStory.title,
     body: seedStory.body,
     founderPhoto,
+    founderPhotoAlt: seedStory.founderPhotoAlt,
     quote: seedStory.quote,
     quoteAttribution: seedStory.quoteAttribution,
   });
-  console.log("✓ Story");
+  console.log("✓ Our Story page");
+}
 
+async function seedShop() {
   await client.createOrReplace({
     _type: "shopPage",
     ...seedShopPage,
   });
-  console.log("✓ Shop page");
-
-  await client.createOrReplace({
-    _type: "recipesPage",
-    ...seedRecipesPage,
-  });
-  console.log("✓ Recipes page");
-
-  await client.createOrReplace({
-    _type: "contactPage",
-    ...seedContactPage,
-  });
-  console.log("✓ Contact page");
+  console.log("✓ Wholesale page");
 
   for (const product of seedProducts) {
     const image = await uploadImage(product.imagePath);
@@ -168,6 +187,10 @@ async function seed() {
       _id: product._id,
       name: product.name,
       slug: slugField(product.slug),
+      sku: product.sku,
+      packSize: product.packSize,
+      unitsPerCase: product.unitsPerCase,
+      minOrderCases: product.minOrderCases,
       price: product.price,
       description: product.description,
       image,
@@ -175,6 +198,14 @@ async function seed() {
     });
     console.log(`✓ Product: ${product.name}`);
   }
+}
+
+async function seedRecipes() {
+  await client.createOrReplace({
+    _type: "recipesPage",
+    ...seedRecipesPage,
+  });
+  console.log("✓ Recipes page");
 
   for (const recipe of seedRecipes) {
     const photo = await uploadImage(recipe.photoPath);
@@ -190,11 +221,45 @@ async function seed() {
     });
     console.log(`✓ Recipe: ${recipe.title}`);
   }
+}
+
+async function seedContact() {
+  await client.createOrReplace({
+    _type: "contactPage",
+    ...seedContactPage,
+  });
+  console.log("✓ Contact page");
+}
+
+const seeders: Record<Exclude<SeedTarget, "all">, () => Promise<void>> = {
+  home: seedHome,
+  shop: seedShop,
+  story: seedStory,
+  recipes: seedRecipes,
+  contact: seedContact,
+};
+
+async function main() {
+  const target = parseTarget(process.argv[2]);
+  const targets: Exclude<SeedTarget, "all">[] =
+    target === "all"
+      ? ["home", "shop", "story", "recipes", "contact"]
+      : [target];
+
+  console.log(
+    `\nSeeding Sanity project ${projectId} / ${dataset}` +
+      (target === "all" ? "" : ` (${target})`) +
+      "\n",
+  );
+
+  for (const key of targets) {
+    await seeders[key]();
+  }
 
   console.log("\nDone! Open /studio to review and publish.\n");
 }
 
-seed().catch((err) => {
+main().catch((err) => {
   console.error("\nSeed failed:", err);
   process.exit(1);
 });

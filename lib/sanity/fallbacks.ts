@@ -10,9 +10,10 @@ import {
 import type {
   ContactPageDocument,
   HomepageDocument,
-  PageHeaderDocument,
   ProductDocument,
   RecipeDocument,
+  RecipesPageDocument,
+  ShopPageDocument,
   StoryDocument,
 } from "./types";
 
@@ -20,6 +21,10 @@ export const fallbackProducts: ProductDocument[] = seedProducts.map((p) => ({
   _id: p._id,
   name: p.name,
   slug: p.slug,
+  sku: p.sku,
+  packSize: p.packSize,
+  unitsPerCase: p.unitsPerCase,
+  minOrderCases: p.minOrderCases,
   price: p.price,
   description: p.description,
   image: null,
@@ -32,6 +37,8 @@ export const fallbackHomepage: HomepageDocument = {
   heroHeadline: seedHomepage.heroHeadline,
   heroSubheadline: seedHomepage.heroSubheadline,
   heroButtonText: seedHomepage.heroButtonText,
+  heroSecondaryButtonText: seedHomepage.heroSecondaryButtonText,
+  heroImageAlt: seedHomepage.heroImageAlt,
   heroBadgeScript: seedHomepage.heroBadgeScript,
   heroBadgeLabel: seedHomepage.heroBadgeLabel,
   whyEyebrow: seedHomepage.whyEyebrow,
@@ -42,29 +49,72 @@ export const fallbackHomepage: HomepageDocument = {
 
 export const fallbackStory: StoryDocument = {
   _id: seedStory._id,
+  seoTitle: seedStory.seoTitle,
+  seoDescription: seedStory.seoDescription,
   sectionEyebrow: seedStory.sectionEyebrow,
   title: seedStory.title,
   body: seedStory.body,
+  founderPhotoAlt: seedStory.founderPhotoAlt,
   quote: seedStory.quote,
   quoteAttribution: seedStory.quoteAttribution,
 };
 
-export const fallbackShopPage: PageHeaderDocument = {
+export const fallbackShopPage: ShopPageDocument = {
   _id: seedShopPage._id,
+  seoTitle: seedShopPage.seoTitle,
+  seoDescription: seedShopPage.seoDescription,
   eyebrow: seedShopPage.eyebrow,
   title: seedShopPage.title,
   description: seedShopPage.description,
+  benefits: seedShopPage.benefits,
+  catalogEyebrow: seedShopPage.catalogEyebrow,
+  catalogTitle: seedShopPage.catalogTitle,
+  catalogDescription: seedShopPage.catalogDescription,
+  pricingEyebrow: seedShopPage.pricingEyebrow,
+  pricingTitle: seedShopPage.pricingTitle,
+  pricingDescription: seedShopPage.pricingDescription,
+  pricingTiers: seedShopPage.pricingTiers,
+  moqEyebrow: seedShopPage.moqEyebrow,
+  moqTitle: seedShopPage.moqTitle,
+  moqDescription: seedShopPage.moqDescription,
+  moqItems: seedShopPage.moqItems,
+  howItWorksEyebrow: seedShopPage.howItWorksEyebrow,
+  howItWorksTitle: seedShopPage.howItWorksTitle,
+  howItWorksSteps: seedShopPage.howItWorksSteps,
+  quoteEyebrow: seedShopPage.quoteEyebrow,
+  quoteTitle: seedShopPage.quoteTitle,
+  quoteDescription: seedShopPage.quoteDescription,
+  formStoreLabel: seedShopPage.formStoreLabel,
+  formContactLabel: seedShopPage.formContactLabel,
+  formEmailLabel: seedShopPage.formEmailLabel,
+  formPhoneLabel: seedShopPage.formPhoneLabel,
+  formStoreTypeLabel: seedShopPage.formStoreTypeLabel,
+  formStoreTypeOptions: [...seedShopPage.formStoreTypeOptions],
+  formProductsLabel: seedShopPage.formProductsLabel,
+  formVolumeLabel: seedShopPage.formVolumeLabel,
+  formRegionLabel: seedShopPage.formRegionLabel,
+  formMessageLabel: seedShopPage.formMessageLabel,
+  formSubmitText: seedShopPage.formSubmitText,
+  formSuccessTitle: seedShopPage.formSuccessTitle,
+  formSuccessMessage: seedShopPage.formSuccessMessage,
 };
 
-export const fallbackRecipesPage: PageHeaderDocument = {
+export const fallbackRecipesPage: RecipesPageDocument = {
   _id: seedRecipesPage._id,
+  seoTitle: seedRecipesPage.seoTitle,
+  seoDescription: seedRecipesPage.seoDescription,
   eyebrow: seedRecipesPage.eyebrow,
   title: seedRecipesPage.title,
   description: seedRecipesPage.description,
+  backLinkText: seedRecipesPage.backLinkText,
+  ingredientsHeading: seedRecipesPage.ingredientsHeading,
+  stepsHeading: seedRecipesPage.stepsHeading,
 };
 
 export const fallbackContactPage: ContactPageDocument = {
   _id: seedContactPage._id,
+  seoTitle: seedContactPage.seoTitle,
+  seoDescription: seedContactPage.seoDescription,
   eyebrow: seedContactPage.eyebrow,
   title: seedContactPage.title,
   description: seedContactPage.description,
@@ -72,6 +122,12 @@ export const fallbackContactPage: ContactPageDocument = {
   locationLine1: seedContactPage.locationLine1,
   locationLine2: seedContactPage.locationLine2,
   visitNote: seedContactPage.visitNote,
+  formNameLabel: seedContactPage.formNameLabel,
+  formEmailLabel: seedContactPage.formEmailLabel,
+  formMessageLabel: seedContactPage.formMessageLabel,
+  formSubmitText: seedContactPage.formSubmitText,
+  formSuccessTitle: seedContactPage.formSuccessTitle,
+  formSuccessMessage: seedContactPage.formSuccessMessage,
 };
 
 export const fallbackRecipes: RecipeDocument[] = seedRecipes.map((r) => ({

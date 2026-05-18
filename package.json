@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx scripts/seed-sanity.ts"
+    "seed": "tsx scripts/seed-sanity.ts",
+    "seed:home": "tsx scripts/seed-sanity.ts home",
+    "seed:shop": "tsx scripts/seed-sanity.ts shop",
+    "seed:story": "tsx scripts/seed-sanity.ts story",
+    "seed:recipes": "tsx scripts/seed-sanity.ts recipes",
+    "seed:contact": "tsx scripts/seed-sanity.ts contact"
   },
   "dependencies": {
     "@sanity/client": "^7.22.0",

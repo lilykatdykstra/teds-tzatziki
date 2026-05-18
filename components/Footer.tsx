@@ -26,17 +26,17 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
-                Shop
+                Wholesale
               </p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/shop" className="hover:text-olive-light">
-                    All Products
+                    Product Line
                   </Link>
                 </li>
                 <li>
-                  <Link href="/cart" className="hover:text-olive-light">
-                    Cart
+                  <Link href="/shop#wholesale-quote" className="hover:text-olive-light">
+                    Request a Quote
                   </Link>
                 </li>
               </ul>

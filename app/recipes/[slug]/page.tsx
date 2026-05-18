@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getRecipeBySlug, getRecipes } from "@/lib/sanity/api";
+import { getRecipeBySlug, getRecipes, getRecipesPage } from "@/lib/sanity/api";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 
 export const revalidate = 30;
@@ -29,7 +29,10 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function RecipeDetailPage({ params }: Props) {
   const { slug } = await params;
-  const recipe = await getRecipeBySlug(slug);
+  const [recipe, page] = await Promise.all([
+    getRecipeBySlug(slug),
+    getRecipesPage(),
+  ]);
 
   if (!recipe) notFound();
 
@@ -43,7 +46,7 @@ export default async function RecipeDetailPage({ params }: Props) {
         href="/recipes"
         className="text-sm font-medium text-aegean hover:text-aegean-dark"
       >
-        ← All recipes
+        {page.backLinkText ?? "← All recipes"}
       </Link>
 
       <h1 className="mt-4 font-display text-4xl text-stone sm:text-5xl">
@@ -63,7 +66,9 @@ export default async function RecipeDetailPage({ params }: Props) {
       </div>
 
       <section className="mt-10">
-        <h2 className="font-display text-2xl text-stone">Ingredients</h2>
+        <h2 className="font-display text-2xl text-stone">
+          {page.ingredientsHeading ?? "Ingredients"}
+        </h2>
         <ul className="mt-4 list-inside list-disc space-y-2 text-stone/80">
           {recipe.ingredients.map((item) => (
             <li key={item}>{item}</li>
@@ -72,7 +77,9 @@ export default async function RecipeDetailPage({ params }: Props) {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-display text-2xl text-stone">Steps</h2>
+        <h2 className="font-display text-2xl text-stone">
+          {page.stepsHeading ?? "Steps"}
+        </h2>
         <ol className="mt-4 space-y-4">
           {recipe.steps.map((step, index) => (
             <li key={step} className="flex gap-4">

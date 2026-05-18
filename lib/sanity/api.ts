@@ -23,9 +23,10 @@ import {
 import type {
   ContactPageDocument,
   HomepageDocument,
-  PageHeaderDocument,
   ProductDocument,
   RecipeDocument,
+  RecipesPageDocument,
+  ShopPageDocument,
   StoryDocument,
 } from "./types";
 
@@ -40,6 +41,10 @@ export type StoreProduct = {
   id: string;
   name: string;
   slug: string;
+  sku?: string;
+  packSize?: string;
+  unitsPerCase?: number;
+  minOrderCases?: number;
   price: number;
   description: string;
   image: string;
@@ -54,6 +59,10 @@ export function toStoreProduct(doc: ProductDocument): StoreProduct {
     id: doc._id,
     name: doc.name,
     slug: doc.slug,
+    sku: doc.sku,
+    packSize: doc.packSize,
+    unitsPerCase: doc.unitsPerCase,
+    minOrderCases: doc.minOrderCases,
     price: doc.price,
     description: doc.description,
     image:
@@ -112,13 +121,13 @@ export async function getStory(): Promise<StoryDocument> {
   return data ?? fallbackStory;
 }
 
-export async function getShopPage(): Promise<PageHeaderDocument> {
-  const data = await safeFetch<PageHeaderDocument>(shopPageQuery);
+export async function getShopPage(): Promise<ShopPageDocument> {
+  const data = await safeFetch<ShopPageDocument>(shopPageQuery);
   return data ?? fallbackShopPage;
 }
 
-export async function getRecipesPage(): Promise<PageHeaderDocument> {
-  const data = await safeFetch<PageHeaderDocument>(recipesPageQuery);
+export async function getRecipesPage(): Promise<RecipesPageDocument> {
+  const data = await safeFetch<RecipesPageDocument>(recipesPageQuery);
   return data ?? fallbackRecipesPage;
 }
 

@@ -1,14 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getStory } from "@/lib/sanity/api";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 
-export const metadata = {
-  title: "Our Story | Ted's Premium Tzatziki",
-  description:
-    "The story of Ted Velman, Greek immigrant and founder of Ted's Coney Island in Des Moines.",
-};
-
 export const revalidate = 30;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const story = await getStory();
+  return {
+    title: story.seoTitle ?? "Our Story | Ted's Premium Tzatziki",
+    description: story.seoDescription,
+  };
+}
 
 function StoryBody({ body }: { body: string }) {
   const paragraphs = body.split(/\n\n+/).filter(Boolean);
@@ -46,7 +49,7 @@ export default async function OurStoryPage() {
             <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-xl">
               <Image
                 src={founderPhoto}
-                alt="Ted's founder and restaurant"
+                alt={story.founderPhotoAlt ?? "Ted's founder and restaurant"}
                 width={500}
                 height={400}
                 className="h-auto w-full object-cover"

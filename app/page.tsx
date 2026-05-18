@@ -47,9 +47,11 @@ export default async function HomePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/shop">{homepage.heroButtonText}</Button>
-              <Button href="/our-story" variant="outline">
-                Our Story
-              </Button>
+              {homepage.heroSecondaryButtonText && (
+                <Button href="/our-story" variant="outline">
+                  {homepage.heroSecondaryButtonText}
+                </Button>
+              )}
             </div>
           </div>
 
@@ -58,7 +60,7 @@ export default async function HomePage() {
             <div className="relative overflow-hidden rounded-3xl border-4 border-white shadow-2xl shadow-aegean/10">
               <Image
                 src={heroImage}
-                alt="Ted's Premium Tzatziki"
+                alt={homepage.heroImageAlt ?? "Ted's Premium Tzatziki"}
                 width={600}
                 height={600}
                 className="h-auto w-full object-cover"

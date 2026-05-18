@@ -3,11 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCart } from "@/context/CartContext";
-
 const links = [
   { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
+  { href: "/shop", label: "Wholesale" },
   { href: "/our-story", label: "Our Story" },
   { href: "/recipes", label: "Recipes" },
   { href: "/contact", label: "Contact" },
@@ -15,7 +13,6 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const { itemCount } = useCart();
 
   return (
     <header className="sticky top-0 z-50 border-b border-sand/80 bg-cream/95 backdrop-blur-md">
@@ -60,15 +57,10 @@ export function Navbar() {
             );
           })}
           <Link
-            href="/cart"
-            className="relative ml-1 rounded-full bg-aegean px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-aegean-dark sm:ml-2 sm:px-4"
+            href="/shop#wholesale-quote"
+            className="ml-1 rounded-full bg-aegean px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-aegean-dark sm:ml-2 sm:px-4"
           >
-            Cart
-            {itemCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-coney-red px-1 text-[11px] font-bold text-white">
-                {itemCount}
-              </span>
-            )}
+            Get a Quote
           </Link>
         </nav>
       </div>
