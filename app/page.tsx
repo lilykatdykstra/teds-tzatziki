@@ -81,7 +81,7 @@ export default async function HomePage() {
             )}
           </div>
           {features.length > 0 && (
-            <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            <div className="mt-12 grid gap-8 md:grid-cols-3">
               {features.map((item, index) => (
                 <div
                   key={item._key}
@@ -121,7 +121,7 @@ export default async function HomePage() {
             <p className="mt-3 text-sm text-stone/55">Click any location for directions</p>
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {stores.map((store) => (
               <a
                 key={store.name + store.address}

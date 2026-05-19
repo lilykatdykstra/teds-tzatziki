@@ -14,7 +14,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
                 Wholesale

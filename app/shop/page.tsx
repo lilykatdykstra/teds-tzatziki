@@ -63,7 +63,7 @@ export default async function ShopPage() {
           </div>
 
           {benefits.length > 0 && (
-            <div className="mt-14 grid gap-6 sm:grid-cols-3">
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
               {benefits.map((benefit) => (
                 <div
                   key={benefit._key}
@@ -80,7 +80,7 @@ export default async function ShopPage() {
 
       {/* Subpage nav cards */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {subpages.map((subpage) => (
             <Link
               key={subpage.href}
