@@ -14,7 +14,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
                 Wholesale
@@ -69,7 +69,7 @@ export function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-span-2 sm:col-span-1">
+            <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
                 Visit
               </p>
@@ -78,6 +78,25 @@ export function Footer() {
                 <br />
                 <a href="https://maps.google.com/?q=3020+Ingersoll+Ave,+Des+Moines,+Iowa+50312" target="_blank" rel="noopener noreferrer" className="hover:text-olive-light">3020 Ingersoll Ave, Des Moines, Iowa 50312</a>
               </p>
+            </div>
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-olive-light">
+                Connect
+              </p>
+              <ul className="space-y-2 text-sm text-cream/70">
+                <li>
+                  <a href="mailto:tedstzatziki@gmail.com" className="hover:text-olive-light">
+                    tedstzatziki@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/tedsconeyisland?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-olive-light">
+                    Instagram
+                  </a>
+                </li>
+                <li className="text-cream/40">Facebook — coming soon</li>
+                <li className="text-cream/40">TikTok — coming soon</li>
+              </ul>
             </div>
           </div>
         </div>

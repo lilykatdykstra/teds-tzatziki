@@ -28,6 +28,28 @@ export default function ContactPage() {
             <p className="mt-4 text-sm text-stone/60">
               Stop in and meet Ted — he still comes by a couple times a week!
             </p>
+            <div className="mt-4 space-y-2 text-sm">
+              <a
+                href="mailto:tedstzatziki@gmail.com"
+                className="flex items-center gap-2 text-stone/70 hover:text-aegean"
+              >
+                <span>✉</span> tedstzatziki@gmail.com
+              </a>
+              <a
+                href="https://www.instagram.com/tedsconeyisland?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-stone/70 hover:text-aegean"
+              >
+                <span>📷</span> Instagram
+              </a>
+              <span className="flex items-center gap-2 text-stone/40">
+                <span>👍</span> Facebook — coming soon
+              </span>
+              <span className="flex items-center gap-2 text-stone/40">
+                <span>🎵</span> TikTok — coming soon
+              </span>
+            </div>
           </div>
         </div>
         <ContactForm
