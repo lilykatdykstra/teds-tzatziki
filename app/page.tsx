@@ -67,20 +67,6 @@ export default async function HomePage() {
                 priority
               />
             </div>
-            {(homepage.heroBadgeScript || homepage.heroBadgeLabel) && (
-              <div className="absolute -bottom-4 -left-4 rounded-2xl bg-white px-4 py-3 shadow-lg">
-                {homepage.heroBadgeScript && (
-                  <p className="font-script text-lg text-olive">
-                    {homepage.heroBadgeScript}
-                  </p>
-                )}
-                {homepage.heroBadgeLabel && (
-                  <p className="text-xs font-bold uppercase tracking-wider text-coney-red">
-                    {homepage.heroBadgeLabel}
-                  </p>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </section>
