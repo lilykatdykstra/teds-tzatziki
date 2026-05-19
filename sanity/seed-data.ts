@@ -5,8 +5,8 @@
 
 export const seedHomepage = {
   _id: "homepage",
-  heroEyebrow: "Family owned since 1957",
-  heroHeadline: "Creamy Greek\nTzatziki\nMade by Ted's",
+  heroEyebrow: "Family owned and operated",
+  heroHeadline: "Premium\nTzatziki\nMade by Ted's",
   heroSubheadline:
     "From Coney Island counters to your kitchen — our premium tzatziki brings decades of Greek heritage and homemade flavor to every scoop.",
   heroButtonText: "Wholesale",
@@ -27,12 +27,12 @@ export const seedHomepage = {
     {
       _key: "made-fresh",
       title: "Made fresh",
-      body: "Real cucumber, garlic, and herbs — the same quality Ted's West has served for decades.",
+      body: "Real cucumber, garlic, and herbs — the same quality Ted's Coney Island has served for decades.",
     },
     {
       _key: "family-owned",
       title: "Family owned",
-      body: "Established in 2005. At 83, Ted still stops by a couple times a week. Come say hello!",
+      body: "It is currently run by Ted's son, but at ## Ted still stops by to say hello!",
     },
   ],
 };
@@ -53,7 +53,7 @@ At 83 years old, Ted still comes in a couple times a week to help out. Come say 
 
 Ted's West specializes in gyros, tenderloins, burgers, homemade onion rings, homemade cheese sticks, salads, coneys of course and much more. So if you're in the mood for some freshly made food then stop into Ted's West!!
 
-Our premium tzatziki brings that same homemade Greek flavor from the restaurant counter to your table — creamy, bright, and made with the care only a family kitchen can give.`,
+Our premium tzatziki brings that same homemade Greek flavor from the restaurant counter to your table — crisp, bright, and made with the care only a family kitchen can give.`,
   quote:
     "From Coney Island classics to Mediterranean dips — the Velman family has been feeding Des Moines for generations.",
   quoteAttribution: "The Ted's Family",
@@ -224,7 +224,7 @@ export const seedProducts = [
     unitsPerCase: 12,
     minOrderCases: 10,
     description:
-      "Our signature creamy dip made with Greek yogurt, fresh cucumber, garlic, and herbs. Ideal for deli dips, Mediterranean sets, and grab-and-go meal solutions.",
+      "Our signature crisp dip made with Greek yogurt, crunchy cucumber, garlic, and herbs. Ideal for deli dips, Mediterranean sets, and grab-and-go meal solutions.",
     imagePath: "images/product-tub.png",
     ingredients: [
       "Greek yogurt",
@@ -245,7 +245,7 @@ export const seedProducts = [
     unitsPerCase: 12,
     minOrderCases: 10,
     description:
-      "Bright, bold, and garlicky — a classic cucumber & garlic tzatziki with the same homemade taste Ted's has served since 1957.",
+      "Bright, bold, and garlicky — a classic cucumber & garlic tzatziki with a satisfying crunch in every bite.",
     imagePath: "images/hero-products.png",
     ingredients: ["Greek yogurt", "Cucumber", "Garlic", "Dill", "Lemon juice"],
   },

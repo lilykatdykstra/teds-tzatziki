@@ -13,7 +13,7 @@ export default async function HomePage() {
     ? getSanityImageUrl(homepage.heroImage, 900)
     : "/images/hero-products.png";
 
-  const headlineLines = homepage.heroHeadline.split("\n").filter(Boolean);
+  const headlineLines = ["Premium", "Tzatziki", "Made by Ted's"];
   const features = homepage.features ?? [];
 
   return (
@@ -21,11 +21,9 @@ export default async function HomePage() {
       <section className="hero-pattern relative overflow-hidden border-b border-sand">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
           <div>
-            {homepage.heroEyebrow && (
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-olive">
-                {homepage.heroEyebrow}
-              </p>
-            )}
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-olive">
+              Family owned and operated
+            </p>
             <h1 className="mt-4 font-display text-5xl leading-[1.1] text-stone sm:text-6xl lg:text-7xl">
               {headlineLines.map((line, index) => (
                 <span
@@ -35,16 +33,13 @@ export default async function HomePage() {
                       ? "block"
                       : index === 1
                         ? "block text-aegean"
-                        : "font-script block text-4xl text-olive sm:text-5xl"
+                        : "font-script mt-4 block text-4xl text-olive sm:text-5xl"
                   }
                 >
                   {line}
                 </span>
               ))}
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-stone/75">
-              {homepage.heroSubheadline}
-            </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/shop">{homepage.heroButtonText}</Button>
               {homepage.heroSecondaryButtonText && (

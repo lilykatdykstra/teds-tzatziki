@@ -25,7 +25,7 @@ const pacifico = Pacifico({
 export const metadata: Metadata = {
   title: "Ted's Premium Tzatziki | Family-Owned Greek Dip",
   description:
-    "Creamy, homemade tzatziki from Ted's — a Greek immigrant-owned family business in Des Moines since 1957.",
+    "Crisp, fresh tzatziki from Ted's Coney Island — a Greek immigrant-owned family business in Des Moines.",
 };
 
 export default async function RootLayout({

@@ -10,8 +10,7 @@ export function Footer() {
               Ted&apos;s Premium Tzatziki
             </p>
             <p className="mt-2 text-sm leading-relaxed text-cream/70">
-              Family-owned Greek tzatziki made with love in Des Moines since
-              1957. From Coney Island classics to creamy Mediterranean dips.
+              New from Ted's Coney Island — a family-owned Des Moines landmark since 1957. Crisp, fresh tzatziki made the way Ted always has.
             </p>
           </div>
 
@@ -23,7 +22,22 @@ export function Footer() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/shop" className="hover:text-olive-light">
-                    Product Line
+                    Overview
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop/products" className="hover:text-olive-light">
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop/pricing" className="hover:text-olive-light">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop/how-it-works" className="hover:text-olive-light">
+                    How It Works
                   </Link>
                 </li>
                 <li>
@@ -68,10 +82,6 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 text-center text-xs text-cream/50">
-          © {new Date().getFullYear()} Ted&apos;s. Family owned &amp; operated
-          since 2005.
-        </p>
       </div>
     </footer>
   );

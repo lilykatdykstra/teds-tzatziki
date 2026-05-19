@@ -22,10 +22,10 @@ import {
   seedContactPage,
   seedHomepage,
   seedProducts,
-  seedRecipes,
+  seedRecipes as recipesData,
   seedRecipesPage,
   seedShopPage,
-  seedStory,
+  seedStory as storyData,
 } from "../sanity/seed-data";
 
 const SEED_TARGETS = ["home", "shop", "story", "recipes", "contact", "all"] as const;
@@ -155,20 +155,20 @@ async function seedHome() {
 }
 
 async function seedStory() {
-  const founderPhoto = await uploadImage(seedStory.founderPhotoPath);
+  const founderPhoto = await uploadImage(storyData.founderPhotoPath);
 
   await client.createOrReplace({
     _type: "story",
-    _id: seedStory._id,
-    seoTitle: seedStory.seoTitle,
-    seoDescription: seedStory.seoDescription,
-    sectionEyebrow: seedStory.sectionEyebrow,
-    title: seedStory.title,
-    body: seedStory.body,
+    _id: storyData._id,
+    seoTitle: storyData.seoTitle,
+    seoDescription: storyData.seoDescription,
+    sectionEyebrow: storyData.sectionEyebrow,
+    title: storyData.title,
+    body: storyData.body,
     founderPhoto,
-    founderPhotoAlt: seedStory.founderPhotoAlt,
-    quote: seedStory.quote,
-    quoteAttribution: seedStory.quoteAttribution,
+    founderPhotoAlt: storyData.founderPhotoAlt,
+    quote: storyData.quote,
+    quoteAttribution: storyData.quoteAttribution,
   });
   console.log("✓ Our Story page");
 }
@@ -207,7 +207,7 @@ async function seedRecipes() {
   });
   console.log("✓ Recipes page");
 
-  for (const recipe of seedRecipes) {
+  for (const recipe of recipesData) {
     const photo = await uploadImage(recipe.photoPath);
     await client.createOrReplace({
       _type: "recipe",

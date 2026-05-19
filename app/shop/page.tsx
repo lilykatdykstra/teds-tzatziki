@@ -81,17 +81,17 @@ export default async function ShopPage() {
       {/* Subpage nav cards */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-5 sm:grid-cols-3">
-          {subpages.map((page) => (
+          {subpages.map((subpage) => (
             <Link
-              key={page.href}
-              href={page.href}
+              key={subpage.href}
+              href={subpage.href}
               className="group flex flex-col rounded-2xl border border-sand bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
             >
-              <h2 className="font-display text-xl text-stone group-hover:text-aegean transition-colors">
-                {page.label}
+              <h2 className="font-display text-xl text-stone transition-colors group-hover:text-aegean">
+                {subpage.label}
               </h2>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-stone/60">
-                {page.description}
+                {subpage.description}
               </p>
               <span className="mt-4 text-sm font-semibold text-aegean">
                 View →

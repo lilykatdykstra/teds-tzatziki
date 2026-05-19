@@ -46,6 +46,7 @@ export function WholesaleInquiryForm({
   const storeTypeOptions = formStoreTypeOptions ?? [];
   const [submitted, setSubmitted] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [storeType, setStoreType] = useState("");
 
   function toggleProduct(id: string) {
     setSelectedProducts((prev) =>
@@ -73,6 +74,7 @@ export function WholesaleInquiryForm({
   return (
     <form
       onSubmit={handleSubmit}
+      autoComplete="off"
       className="rounded-2xl border border-sand bg-white p-8 shadow-sm"
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -149,7 +151,8 @@ export function WholesaleInquiryForm({
               name="storeType"
               required
               className={inputClass}
-              defaultValue=""
+              value={storeType}
+              onChange={(e) => setStoreType(e.target.value)}
             >
               <option value="" disabled>
                 Select store type
