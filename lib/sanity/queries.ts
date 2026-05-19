@@ -21,6 +21,22 @@ export const productsQuery = groq`
   }
 `;
 
+export const productBySlugQuery = groq`
+  *[_type == "product" && slug.current == $slug][0] {
+    _id,
+    name,
+    "slug": slug.current,
+    sku,
+    packSize,
+    unitsPerCase,
+    minOrderCases,
+    price,
+    description,
+    image { ${imageFields} },
+    ingredients
+  }
+`;
+
 export const productsByIdsQuery = groq`
   *[_type == "product" && _id in $ids] {
     _id,

@@ -254,21 +254,21 @@ export const seedProducts = [
 export const seedRecipes = [
   {
     _id: "recipe-classic-gyro-bowl",
-    title: "Classic Gyro Bowl",
+    title: "Lorem Ipsum Dolor",
     slug: "classic-gyro-bowl",
     description:
-      "Layer warm rice, sliced gyro, fresh veggies, and a generous scoop of Ted's tzatziki.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     ingredients: [
-      "1 cup cooked rice",
-      "Sliced gyro meat or chicken",
-      "Tomato, onion, and cucumber",
-      "Ted's Premium Tzatziki",
-      "Warm pita",
+      "Lorem ipsum dolor sit amet",
+      "Consectetur adipiscing elit",
+      "Sed do eiusmod tempor",
+      "Ut labore et dolore magna",
+      "Aliqua enim ad minim",
     ],
     steps: [
-      "Warm rice and gyro meat in a skillet.",
-      "Add rice to a bowl and top with meat and chopped vegetables.",
-      "Dollop tzatziki over the top and serve with warm pita.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     ],
     photoPath: "images/product-tub.png",
   },

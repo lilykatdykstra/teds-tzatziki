@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -7,13 +6,6 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="max-w-sm">
-            <Image
-              src="/images/tzatziki-logo.png"
-              alt="Ted's Premium Tzatziki"
-              width={120}
-              height={120}
-              className="mb-4 h-24 w-24 object-contain"
-            />
             <p className="font-display text-lg text-cream">
               Ted&apos;s Premium Tzatziki
             </p>
@@ -68,19 +60,15 @@ export function Footer() {
                 Visit
               </p>
               <p className="text-sm leading-relaxed text-cream/70">
-                Ted&apos;s West
+                Ted&apos;s Coney Island
                 <br />
-                Des Moines, IA
-                <br />
-                Gyros, coneys &amp; homemade favorites
+                <a href="https://maps.google.com/?q=3020+Ingersoll+Ave,+Des+Moines,+Iowa+50312" target="_blank" rel="noopener noreferrer" className="hover:text-olive-light">3020 Ingersoll Ave, Des Moines, Iowa 50312</a>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="greek-key mt-10 opacity-40" aria-hidden />
-
-        <p className="mt-8 text-center text-xs text-cream/50">
+        <p className="mt-10 text-center text-xs text-cream/50">
           © {new Date().getFullYear()} Ted&apos;s. Family owned &amp; operated
           since 2005.
         </p>

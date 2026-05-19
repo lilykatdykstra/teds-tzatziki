@@ -12,6 +12,7 @@ import { getSanityImageUrl } from "./image";
 import {
   contactPageQuery,
   homepageQuery,
+  productBySlugQuery,
   productsByIdsQuery,
   productsQuery,
   recipeBySlugQuery,
@@ -109,6 +110,17 @@ export async function getProductsByIds(
   }
 
   return results;
+}
+
+export async function getProductBySlug(
+  slug: string,
+): Promise<StoreProduct | null> {
+  const doc = await safeFetch<ProductDocument>(productBySlugQuery, { slug });
+  if (!doc) {
+    const fallback = fallbackProducts.find((p) => p.slug === slug);
+    return fallback ? toStoreProduct(fallback) : null;
+  }
+  return toStoreProduct(doc);
 }
 
 export async function getHomepage(): Promise<HomepageDocument> {

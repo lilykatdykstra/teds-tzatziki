@@ -113,6 +113,48 @@ export default async function HomePage() {
           )}
         </section>
       )}
+      {/* Find a store */}
+      <section className="border-t border-sand">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-aegean">
+              Find Us Near You
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-stone sm:text-4xl">
+              Available at these Des Moines retailers
+            </h2>
+            <p className="mt-3 text-sm text-stone/55">Click any location for directions</p>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {stores.map((store) => (
+              <a
+                key={store.name + store.address}
+                href={`https://maps.google.com/?q=${encodeURIComponent(store.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-2xl border border-sand bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <p className="font-display text-xl text-stone transition-colors group-hover:text-aegean">
+                  {store.name}
+                </p>
+                <p className="mt-1 flex-1 text-sm text-stone/55">{store.address}</p>
+                <p className="mt-4 text-xs font-semibold text-aegean">
+                  Get directions →
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+const stores = [
+  { name: "Gateway Market", address: "2002 Woodland Ave, Des Moines, IA 50312" },
+  { name: "Campbell's Market", address: "4040 University Ave, Des Moines" },
+  { name: "Campbell's Market", address: "2749 100th St, Des Moines" },
+  { name: "Price Chopper", address: "3425 Ingersoll Ave, Des Moines" },
+  { name: "Price Chopper", address: "2701 Beaver Ave, Des Moines" },
+];

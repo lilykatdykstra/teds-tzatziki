@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import type { StoreProduct } from "@/lib/sanity/api";
 import { formatPrice } from "@/lib/products";
 
@@ -7,8 +10,13 @@ type WholesaleProductCardProps = {
 };
 
 export function WholesaleProductCard({ product }: WholesaleProductCardProps) {
+  const router = useRouter();
+
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-sand bg-white shadow-sm">
+    <article
+      className="flex flex-col overflow-hidden rounded-2xl border border-sand bg-white shadow-sm transition-shadow hover:shadow-md cursor-pointer"
+      onClick={() => router.push(`/shop/products/${product.slug}`)}
+    >
       <div className="relative aspect-[4/3] overflow-hidden bg-sky-light sm:aspect-square">
         <Image
           src={product.image}
@@ -84,8 +92,9 @@ export function WholesaleProductCard({ product }: WholesaleProductCardProps) {
         <p className="mt-4 text-xs text-stone/55">
           Wholesale case pricing quoted per tier —{" "}
           <a
-            href="#wholesale-quote"
+            href="/shop#wholesale-quote"
             className="font-medium text-aegean hover:underline"
+            onClick={(e) => e.stopPropagation()}
           >
             request a quote
           </a>
