@@ -51,7 +51,7 @@ My father Ted Velman, a Greek immigrant, opened the first Ted's in 1985. Prior t
 
 At 83 years old, Ted still comes in a couple times a week to help out. Come say hello!
 
-Ted's West specializes in gyros, tenderloins, burgers, homemade onion rings, homemade cheese sticks, salads, coneys of course and much more. So if you're in the mood for some freshly made food then stop into Ted's West!!
+Ted's Coney Island specializes in gyros, tenderloins, burgers, homemade onion rings, homemade cheese sticks, salads, coneys of course and much more. So if you're in the mood for some freshly made food then stop into Ted's Coney Island!!
 
 Our premium tzatziki brings that same homemade Greek flavor from the restaurant counter to your table — crisp, bright, and made with the care only a family kitchen can give.`,
   quote:
@@ -199,9 +199,9 @@ export const seedContactPage = {
   eyebrow: "Contact",
   title: "Say hello",
   description:
-    "Questions about orders, wholesale, or visiting Ted's West? Send us a message — we'd love to hear from you.",
-  locationName: "Ted's West",
-  locationLine1: "Des Moines, Iowa",
+    "Questions about orders, wholesale, or visiting Ted's Coney Island? Send us a message — we'd love to hear from you.",
+  locationName: "Ted's Coney Island",
+  locationLine1: "3020 Ingersoll Ave, Des Moines, Iowa 50312",
   locationLine2: "Gyros · Coneys · Homemade favorites",
   visitNote: "Stop in and meet Ted — he still comes by a couple times a week!",
   formNameLabel: "Name",
