@@ -5,7 +5,7 @@ import { getSanityImageUrl } from "@/lib/sanity/image";
 
 export const revalidate = 30;
 
-const featureAccents = ["text-aegean", "text-olive", "text-coney-red"];
+const featureAccents = ["text-aegean", "text-olive", "text-aegean"];
 
 export default async function HomePage() {
   const homepage = await getHomepage();

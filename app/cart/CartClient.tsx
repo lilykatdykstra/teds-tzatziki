@@ -124,7 +124,7 @@ export function CartClient() {
               <button
                 type="button"
                 onClick={() => removeItem(line.productId)}
-                className="text-sm text-stone/50 underline hover:text-coney-red"
+                className="text-sm text-stone/50 underline hover:text-aegean"
               >
                 Remove
               </button>
@@ -144,7 +144,7 @@ export function CartClient() {
           Shipping and tax calculated at checkout.
         </p>
         {error && (
-          <p className="mt-4 rounded-lg bg-coney-red/10 px-4 py-2 text-sm text-coney-red">
+          <p className="mt-4 rounded-lg bg-aegean/10 px-4 py-2 text-sm text-aegean">
             {error}
           </p>
         )}
